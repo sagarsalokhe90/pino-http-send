@@ -37,11 +37,7 @@
     "lint": "eslint --ext ts ./src",
     "test": "jest"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
+
   "lint-staged": {
     "*.{js,ts,json,css,md}": "prettier --write",
     "*.{ts,js}": "eslint --cache --fix",
