@@ -1,5 +1,4 @@
 import got, { Method } from 'got';
-
 import { args } from './args';
 import { logError, logWarn } from './log';
 
@@ -40,6 +39,7 @@ export function send(logs: Record<string, unknown>[], numRetries = 0): void {
     retries = 5,
     interval = 1000,
     silent = false,
+    agent = undefined
   } = args;
 
   const limitHit = numRetries === retries;
@@ -51,6 +51,10 @@ export function send(logs: Record<string, unknown>[], numRetries = 0): void {
     password,
     headers,
     allowGetBody: true,
+    agent: {
+      http: agent,
+      https: agent
+    },
     ...createBody(logs, bodyType as BodyType),
   })
     .then()

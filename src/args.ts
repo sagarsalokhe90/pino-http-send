@@ -1,5 +1,6 @@
 import { readFileSync } from 'fs';
 import yargs from 'yargs';
+import * as https from 'https';
 
 export type Args = {
   url: string;
@@ -15,6 +16,7 @@ export type Args = {
   interval?: number;
   timeout?: number;
   config?: string;
+  agent?: https.Agent
 };
 
 /**
